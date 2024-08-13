@@ -1,0 +1,55 @@
+{
+    "services": [
+        {
+            "start": "delayed-auto",
+            "name": "elasticsearch-service-x64"
+        },
+        {
+            "start": "delayed-auto",
+            "name": "wildfly-bs"
+        },
+        {
+            "start": "delayed-auto",
+            "name": "wildfly-insight"
+        }
+    ],
+    "elasticSearchConfig": [
+        {
+            "action.destructive_requires_name": "true",
+            "http.port": "9201"
+        }
+    ],
+    "serviceInstallation": [
+        {
+            "sourceFolderConfigFile": "elasticsearch-ES8.yml",
+            "serviceName": "elasticsearch-service-x64",
+            "folder": "elasticsearch-8.15.0",
+            "scriptPath": "bin",
+            "configFullPath": "config/elasticsearch.yml",
+            "installCommand": "elasticsearch-service.bat install",
+            "removeCommand": "elasticsearch-service.bat remove"
+        },
+        {            
+            "folder": "wildfly-24.0.0.Final",
+            "scriptPath": "bin/service",
+            "installCommand": "service.bat install",
+            "removeCommand": "service.bat uninstall"
+        }
+    ],
+    "source": "SourceFolder",
+    "destination": "DestinationFolder",
+    "xmlOperations": [
+        {
+            "filePath": "C:\\config.xml",
+            "xpath": "/configuration",
+            "snippetContent": "<setting>value</setting>"
+        }
+    ],
+    "textFileOperations": [
+        {
+            "filePath": "C:\\Users\\wasjke\\Desktop\\PSTest\\example.txt",
+            "searchText": "oldText",
+            "replaceText": "newText"
+        }
+    ]
+}
